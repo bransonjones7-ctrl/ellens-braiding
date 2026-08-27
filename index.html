@@ -391,20 +391,6 @@ h3{font-size:1.16rem;font-family:var(--sans);font-weight:600;letter-spacing:-.00
 .prod-img{aspect-ratio:1;position:relative;display:flex;align-items:center;justify-content:center;
   background:var(--cream-2);overflow:hidden}
 .prod-img img{width:100%;height:100%;object-fit:cover}
-.prod-img .bottle{
-  width:34%;height:62%;border-radius:10px 10px 16px 16px;position:relative;
-  box-shadow:inset 0 -22px 32px -20px rgba(0,0,0,.28),0 10px 26px -14px rgba(36,26,21,.4);
-}
-.prod-img .bottle::before{content:"";position:absolute;left:50%;top:-13%;transform:translateX(-50%);
-  width:26%;height:15%;border-radius:4px 4px 2px 2px;background:inherit;filter:brightness(.82)}
-.prod-img .bottle::after{content:"";position:absolute;inset:34% 16% auto;height:26%;
-  background:rgba(251,247,242,.9);border-radius:2px}
-.tint-a .bottle{background:linear-gradient(160deg,#C9A063,#A97C3F)}
-.tint-b .bottle{background:linear-gradient(160deg,#8C6A4A,#5E4632)}
-.tint-c .bottle{background:linear-gradient(160deg,#7E8F7A,#556B52)}
-.tint-d .bottle{background:linear-gradient(160deg,#3A2C24,#241A15)}
-.tint-e .bottle{background:linear-gradient(160deg,#B98E8E,#8C6060);border-radius:50% 50% 44% 44%}
-.tint-f .bottle{background:linear-gradient(160deg,#A9927F,#7C6553)}
 .prod-body{padding:1.35rem 1.4rem 1.5rem;display:flex;flex-direction:column;flex:1}
 .prod-name{font-size:.98rem;font-weight:600;line-height:1.35;margin-bottom:.4rem}
 .prod-blurb{font-size:.85rem;color:var(--muted);line-height:1.55;margin:0 0 1.2rem;flex:1}
@@ -425,6 +411,35 @@ h3{font-size:1.16rem;font-family:var(--sans);font-weight:600;letter-spacing:-.00
 .prod-disclosure{font-size:.79rem;color:var(--muted);margin:1.6rem 0 0;line-height:1.55;max-width:60ch}
 .prod-price-approx{font-size:1.14rem;color:var(--muted)}
 .is-inert{opacity:.5;cursor:default;pointer-events:none}
+
+
+/* ---------- product artwork ----------
+   Colour-matched stand-ins. Manufacturer photography is not ours to
+   publish, so these hold the layout until Ellen shoots her own shelf. */
+.prod-img .bottle,
+.prod-img .jar{position:relative;box-shadow:inset 0 -20px 30px -22px rgba(0,0,0,.3),0 10px 26px -14px rgba(36,26,21,.4)}
+.prod-img .bottle{width:33%;height:60%;border-radius:9px 9px 14px 14px}
+.prod-img .jar{width:47%;height:42%;border-radius:7px 7px 11px 11px}
+.prod-img .bottle::before,
+.prod-img .jar::before{content:"";position:absolute;left:50%;transform:translateX(-50%);background:inherit}
+.prod-img .bottle::before{top:-15%;width:24%;height:17%;border-radius:4px 4px 2px 2px}
+.prod-img .jar::before{top:-13%;width:92%;height:20%;border-radius:6px 6px 3px 3px}
+.prod-img .bottle::after,
+.prod-img .jar::after{content:"";position:absolute;left:12%;right:12%;background:rgba(251,247,242,.92);border-radius:2px}
+.prod-img .bottle::after{top:32%;height:30%}
+.prod-img .jar::after{top:34%;height:40%}
+
+.tint-lime   .bottle{background:linear-gradient(160deg,#C6D24B,#8CA22C)}
+.tint-lime   .bottle::before{background:#B08442}
+.tint-olive  .bottle{background:linear-gradient(160deg,#A8BE55,#6E8434)}
+.tint-olive  .bottle::before{background:#C3D84A}
+.tint-amber  .jar{background:linear-gradient(160deg,#E0A756,#B4732C)}
+.tint-amber  .jar::before{background:#D9B36A}
+.tint-citrus .jar{background:linear-gradient(160deg,#F2E45C,#E4C534)}
+.tint-citrus .jar::before{background:#F09A2B}
+.tint-indigo .jar{background:linear-gradient(160deg,#EFEAD8,#D8D1BA)}
+.tint-indigo .jar::before{background:#5A4E9C}
+.prod-size{font-size:.74rem;color:var(--muted);letter-spacing:.04em;margin:-.15rem 0 .45rem}
 
 </style>
 </head>
@@ -753,15 +768,30 @@ const CONFIG = {
   affiliateTag: "",           // Amazon Associates tracking id, e.g. ellens-20
   affiliateDisclosure: "As an Amazon Associate, I earn from qualifying purchases. It costs you nothing extra.",
 
-  productsNote: "The products I actually use in the chair. Buy them wherever you like, these links just make it easy.",
+  productsNote: "The products I actually use in the chair. Ask at your appointment, or use the links to order them yourself.",
+
   productsPlaceholder: true,
   products: [
-    { name: "Rosewater & Peppermint Loc Spray", price: 18, blurb: "Daily moisture for locs and twists. Light enough not to build up.", tint: "a", url: "" },
-    { name: "Braid & Scalp Oil",                price: 16, blurb: "Soothes tension and calms flaking in the first days after a fresh install.", tint: "b", url: "" },
-    { name: "Residue-Free Loc Shampoo",         price: 22, blurb: "Cleans all the way through without leaving anything behind in the loc.", tint: "c", url: "" },
-    { name: "Edge Control",                     price: 12, blurb: "Firm hold that lasts the day and does not flake.", tint: "d", url: "" },
-    { name: "Satin Bonnet",                     price: 14, blurb: "Protects the style overnight. The single cheapest way to make braids last longer.", tint: "e", url: "" },
-    { name: "Braid Sheen Spray",                price: 15, blurb: "Brings the shine back between appointments.", tint: "f", url: "" }
+    { name: "BB Tropical Roots Stimulating Growth Oil",
+      size: "8 fl oz",  price: 8,
+      blurb: "Lightweight daily oil with pineapple and guava. Seals in shine and strengthens locs and twists without weighing them down.",
+      tint: "lime" },
+    { name: "African Pride Black Castor Miracle Braid, Loc & Twist Gel",
+      size: "8 oz",     price: 9,
+      blurb: "Extra hold for clean part lines and smooth edges. Tames frizz without the stickiness. No parabens, sulfates, mineral oil or petrolatum.",
+      tint: "amber" },
+    { name: "ORS Lock & Twist Gel",
+      size: "13 oz",    price: 10,
+      blurb: "Pre-mixed creme gel that holds a twist while still putting moisture back in. The big jar, for anyone retwisting at home.",
+      tint: "indigo" },
+    { name: "Jamaican Mango & Lime Locking Gel",
+      size: "6 oz",     price: 8,
+      blurb: "Strengthening resistant formula for locs, with moringa seed oil, manuka honey, safflower oil and aloe.",
+      tint: "citrus" },
+    { name: "African Pride Olive Miracle Growth Oil",
+      size: "8 fl oz",  price: 8,
+      blurb: "Anti-breakage oil for scalp and length. Helps with split ends and dryness between appointments.",
+      tint: "olive" }
   ],
 
   
@@ -980,8 +1010,10 @@ const CONFIG = {
 
     prodGrid.innerHTML = CONFIG.products.map(function (p) {
       var href = p.url || (mode === "reserve" ? CONFIG.bookingUrl : "");
-      var img  = p.img ? '<img src="' + p.img + '" alt="' + esc(p.name) + '">'
-                       : '<div class="bottle"></div>';
+      var jars = { amber: 1, indigo: 1, citrus: 1 };     // tubs, not bottles
+      var img  = p.img
+        ? '<img src="' + p.img + '" alt="' + esc(p.name) + '">'
+        : '<div class="' + (jars[p.tint] ? 'jar' : 'bottle') + '"></div>';
       var price = mode === "affiliate"
         ? '<span class="prod-price prod-price-approx">~$' + p.price + "</span>"
         : '<span class="prod-price">$' + p.price + "</span>";
@@ -991,6 +1023,7 @@ const CONFIG = {
         "</div>" +
         '<div class="prod-body">' +
           '<div class="prod-name">' + esc(p.name) + "</div>" +
+          (p.size ? '<div class="prod-size">' + esc(p.size) + "</div>" : "") +
           '<p class="prod-blurb">' + esc(p.blurb) + "</p>" +
           '<div class="prod-foot">' + price +
             (href
