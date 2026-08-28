@@ -556,9 +556,7 @@ h3{font-size:1.16rem;font-family:var(--sans);font-weight:600;letter-spacing:-.00
     <div class="prod-grid rv" id="prodGrid"></div>
     <p class="prod-disclosure rv" id="prodPriceNote" style="display:none"></p>
     <p class="prod-disclosure rv" id="prodDisclosure" style="display:none"></p>
-    <div class="notice rv" id="prodNotice" style="display:none">
-      <p><strong>Demo placeholder</strong>These are stand-in products so you can see the layout. Real products, prices and photos go here.</p>
-    </div>
+
   </div>
 </section>
 
@@ -1055,9 +1053,6 @@ const CONFIG = {
       } else {
         disc.style.display = "none";
       }
-    }
-    if (CONFIG.productsPlaceholder) {
-      document.getElementById("prodNotice").style.display = "";
     }
   }
 
