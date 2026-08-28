@@ -650,9 +650,8 @@ const CONFIG = {
   tagline:   "Braiding and loc artistry in Brookline",
 
   
-  phoneOffice:  "412-207-7477",
-  phoneCell:    "412-929-2991",
-  smsNumber:    "412-929-2991",
+  phone:     "412-929-2991",
+  smsNumber: "412-929-2991",
 
   address:  "932 Brookline Blvd",
   city:     "Pittsburgh",
@@ -869,7 +868,7 @@ const CONFIG = {
   });
   ["ctaCall", "barCall"].forEach(function (id) {
     var a = document.getElementById(id);
-    if (a) a.href = telHref(CONFIG.phoneOffice);
+    if (a) a.href = telHref(CONFIG.phone);
   });
 
   document.title = CONFIG.nameFull + " | " + CONFIG.city + ", " + CONFIG.state;
@@ -1104,8 +1103,7 @@ const CONFIG = {
   
   $("#addr").innerHTML =
     esc(CONFIG.address) + "<br>" + esc(CONFIG.city) + ", " + esc(CONFIG.state) + " " + esc(CONFIG.zip) +
-    '<br><br>Office <a href="' + telHref(CONFIG.phoneOffice) + '">' + esc(CONFIG.phoneOffice) + "</a>" +
-    '<br>Cell <a href="' + telHref(CONFIG.phoneCell) + '">' + esc(CONFIG.phoneCell) + "</a>";
+    '<br><br><a href="' + telHref(CONFIG.phone) + '">' + esc(CONFIG.phone) + "</a>";
   $("#dirBtn").href = CONFIG.mapsUrl;
 
   var today = new Date().getDay(); // 0 = Sunday, matches CONFIG.hours order
@@ -1118,8 +1116,7 @@ const CONFIG = {
   $("#ftrAddr").innerHTML = esc(CONFIG.address) + "<br>" + esc(CONFIG.city) + ", " +
     esc(CONFIG.state) + " " + esc(CONFIG.zip);
   $("#ftrPhone").innerHTML =
-    '<a href="' + telHref(CONFIG.phoneOffice) + '">' + esc(CONFIG.phoneOffice) + "</a><br>" +
-    '<a href="' + telHref(CONFIG.phoneCell) + '">' + esc(CONFIG.phoneCell) + "</a>";
+    '<a href="' + telHref(CONFIG.phone) + '">' + esc(CONFIG.phone) + "</a>";
   $("#ftrIg").href = CONFIG.instagram;
   $("#ftrFb").href = CONFIG.facebook;
   $("#ftrBot").textContent = "© " + new Date().getFullYear() + " " + CONFIG.nameFull +
