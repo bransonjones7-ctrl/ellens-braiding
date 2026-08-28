@@ -554,6 +554,7 @@ h3{font-size:1.16rem;font-family:var(--sans);font-weight:600;letter-spacing:-.00
       <p class="lede" id="prodNote"></p>
     </div>
     <div class="prod-grid rv" id="prodGrid"></div>
+    <p class="prod-disclosure rv" id="prodPriceNote" style="display:none"></p>
     <p class="prod-disclosure rv" id="prodDisclosure" style="display:none"></p>
     <div class="notice rv" id="prodNotice" style="display:none">
       <p><strong>Demo placeholder</strong>These are stand-in products so you can see the layout. Real products, prices and photos go here.</p>
@@ -770,26 +771,33 @@ const CONFIG = {
 
   productsNote: "The products I actually use in the chair. Ask at your appointment, or use the links to order them yourself.",
 
-  productsPlaceholder: true,
+  
+  productsPlaceholder: false,
+  priceNote: "Approximate shelf price. What you pay depends on the seller.",
   products: [
     { name: "BB Tropical Roots Stimulating Growth Oil",
-      size: "8 fl oz",  price: 8,
+      size: "8 fl oz", price: 10, asin: "B005PR1W0U",
+      url: "https://www.amazon.com/dp/B005PR1W0U",
       blurb: "Lightweight daily oil with pineapple and guava. Seals in shine and strengthens locs and twists without weighing them down.",
       tint: "lime" },
     { name: "African Pride Black Castor Miracle Braid, Loc & Twist Gel",
-      size: "8 oz",     price: 9,
+      size: "8 oz", price: 8, asin: "B07RPBDPT1",
+      url: "https://www.amazon.com/dp/B07RPBDPT1",
       blurb: "Extra hold for clean part lines and smooth edges. Tames frizz without the stickiness. No parabens, sulfates, mineral oil or petrolatum.",
       tint: "amber" },
     { name: "ORS Lock & Twist Gel",
-      size: "13 oz",    price: 10,
+      size: "13 oz", price: 8, asin: "B000NHN282",
+      url: "https://www.amazon.com/dp/B000NHN282",
       blurb: "Pre-mixed creme gel that holds a twist while still putting moisture back in. The big jar, for anyone retwisting at home.",
       tint: "indigo" },
     { name: "Jamaican Mango & Lime Locking Gel",
-      size: "6 oz",     price: 8,
+      size: "6 oz", price: 7, asin: "B000EH0NI8",
+      url: "https://www.amazon.com/dp/B000EH0NI8",
       blurb: "Strengthening resistant formula for locs, with moringa seed oil, manuka honey, safflower oil and aloe.",
       tint: "citrus" },
     { name: "African Pride Olive Miracle Growth Oil",
-      size: "8 fl oz",  price: 8,
+      size: "8 fl oz", price: 7, asin: "B01N3U1KXX",
+      url: "https://www.amazon.com/dp/B01N3U1KXX",
       blurb: "Anti-breakage oil for scalp and length. Helps with split ends and dryness between appointments.",
       tint: "olive" }
   ],
@@ -1010,6 +1018,9 @@ const CONFIG = {
 
     prodGrid.innerHTML = CONFIG.products.map(function (p) {
       var href = p.url || (mode === "reserve" ? CONFIG.bookingUrl : "");
+      if (href && CONFIG.affiliateTag && /amazon\./.test(href)) {
+        href += (href.indexOf("?") === -1 ? "?" : "&") + "tag=" + CONFIG.affiliateTag;
+      }
       var jars = { amber: 1, indigo: 1, citrus: 1 };     // tubs, not bottles
       var img  = p.img
         ? '<img src="' + p.img + '" alt="' + esc(p.name) + '">'
@@ -1032,6 +1043,9 @@ const CONFIG = {
           "</div>" +
         "</div></article>";
     }).join("");
+
+    var pn = document.getElementById("prodPriceNote");
+    if (pn && CONFIG.priceNote) { pn.textContent = CONFIG.priceNote; pn.style.display = ""; }
 
     var disc = document.getElementById("prodDisclosure");
     if (disc) {
