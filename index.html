@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ellen's Locs &amp; African Hair Braiding | Pittsburgh, PA</title>
+<title>Ellen's Locs, Frizz-American Hair Braiding | Pittsburgh, PA</title>
 <meta name="description" content="Braiding and loc artistry on Brookline Boulevard in Pittsburgh. Knotless braids, box braids, locs, twists and cornrows. Rated 5.0 from 30 reviews.">
 
 <meta name="robots" content="noindex,nofollow">
@@ -441,13 +441,34 @@ h3{font-size:1.16rem;font-family:var(--sans);font-weight:600;letter-spacing:-.00
 .tint-indigo .jar::before{background:#5A4E9C}
 .prod-size{font-size:.74rem;color:var(--muted);letter-spacing:.04em;margin:-.15rem 0 .45rem}
 
+/* ---------- add-ons ----------
+   These apply to any service, so they sit under the whole menu rather than
+   inside one tab where nobody would find them. */
+.addons{margin-top:1.6rem;border:1px solid var(--line);border-radius:var(--r);
+  background:var(--cream-2);padding:1.3rem 1.5rem 1.4rem}
+.addons-head{display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap;margin-bottom:1rem}
+.addons-title{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.addons-note{font-size:.86rem;color:var(--muted)}
+.addons-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.addon{background:var(--cream);padding:.95rem 1.1rem;display:flex;flex-direction:column;gap:.4rem}
+.addon-name{font-size:.93rem;font-weight:600;line-height:1.35}
+.addon-price{font-family:var(--serif);font-size:1.2rem;color:var(--espresso);line-height:1}
+.addon .chip{align-self:flex-start}
+@media(max-width:760px){
+  .addons{padding:1.1rem 1.1rem 1.2rem}
+  .addons-row{grid-template-columns:1fr}
+  .addon{flex-direction:row;align-items:center;justify-content:space-between;gap:.7rem;flex-wrap:wrap}
+  .addon-name{flex:1 1 100%}
+}
+
 </style>
 </head>
 <body>
 
 <header class="hdr" id="hdr">
   <div class="wrap hdr-in">
-    <a href="#" class="logo" id="logo">Ellen's<small>Locs &amp; Braiding</small></a>
+    <a href="#" class="logo" id="logo">Ellen's<small>Locs &middot; Frizz-American Braiding</small></a>
     <nav class="nav" id="nav">
       <a href="#services">Services</a>
       <a href="#gallery">Gallery</a>
@@ -488,6 +509,7 @@ h3{font-size:1.16rem;font-family:var(--sans);font-weight:600;letter-spacing:-.00
     </div>
     <div class="tabs rv" id="svcTabs"></div>
     <div class="svc-grid rv" id="svcGrid"></div>
+    <div class="addons rv" id="addOns"></div>
     <div class="notice rv">
       <p><strong>Booking &amp; deposits</strong><span id="depositNote"></span></p>
     </div>
@@ -624,7 +646,7 @@ const CONFIG = {
 
   
   name:      "Ellen's",
-  nameFull:  "Ellen's Locs & African Hair Braiding",
+  nameFull:  "Ellen's Locs, Frizz-American Hair Braiding",
   tagline:   "Braiding and loc artistry in Brookline",
 
   
@@ -685,79 +707,82 @@ const CONFIG = {
   
   serviceGroups: [
     { id: "locs", label: "Locs & Dreadlocks", items: [
-      { name: "Dreadlocks Retwist",   price: 80,  from: true, time: "1h",     note: "Price depends on your hair. Does not include detox." },
-      { name: "Starter Locs",         price: 120, from: true, time: "1h 40m", note: "Starting new locs, depending on the hair you walk in with." },
-      { name: "Instant Locs",         price: 400, from: true, time: "2h 30m" },
-      { name: "Interlocs",            price: 180, from: true, time: "2h 30m" },
-      { name: "Loc Extensions",       price: 650, time: "4h",     note: "From 40 pieces. Length affects price." },
-      { name: "Faux Locs",            price: 320, time: "3h 30m", hair: "included" },
-      { name: "Goddess Faux Locs",    price: 350, time: "5h 30m", hair: "included" },
-      { name: "Butterfly Locs, Bob",  price: 230, time: "4h",     hair: "included" }
+      { name: "Dreadlocks Retwist",              price: 80,  from: true, time: "1h",     note: "Depends on the hair you walk in with. Does not include detox." },
+      { name: "Dreadlocks Retwist, Starting New", price: 120, from: true, time: "1h 40m", note: "Starting new locs. Also depends on the hair you walk in with." },
+      { name: "Instant Locs",                    price: 400, from: true, time: "2h 30m" },
+      { name: "Interlocs",                       price: 180, from: true, time: "2h 30m" },
+      { name: "Locs Hair Extensions",            price: 650, time: "4h",     note: "From 40 pieces. Hair not included. Length affects price." },
+      { name: "Locs Extension",                  price: 650, time: "4h 30m", note: "From 40 pieces." },
+      { name: "Faux Locs",                       price: 320, time: "3h 30m", hair: "included" },
+      { name: "Goddess Faux Locs",               price: 350, time: "5h 30m", hair: "included" },
+      { name: "Butterfly Locs, Bob",             price: 230, time: "4h",     hair: "included" }
     ]},
     { id: "knotless", label: "Knotless Braids", items: [
-      { name: "Small Knotless Braids",         price: 330, time: "3h",     hair: "included" },
-      { name: "Medium Knotless Braids",        price: 260, time: "3h",     hair: "included" },
-      { name: "Large Knotless Braids",         price: 200, time: "2h 30m", hair: "included" },
-      { name: "Medium Knotless, Mid-Back",     price: 210, time: "2h",     hair: "included" },
-      { name: "Small Boho Knotless",           price: 280, time: "3h 30m", hair: "provide", note: "Bring 2 bags, 18 to 20 inch or longer." },
-      { name: "Small Boho Knotless",           price: 380, time: "4h",     hair: "included", note: "All colors provided, human hair deep bulk." },
-      { name: "Medium Boho Knotless",          price: 300, time: "3h 30m", hair: "included" },
-      { name: "Knotless, Short with Curly",    price: 280, time: "2h 30m", hair: "included", note: "Curly hair charged extra." },
-      { name: "Knotless French Curls",         price: 380, time: "6h 30m", hair: "included" }
+      { name: "Small Knotless Braids",           price: 330, time: "3h",     hair: "included", note: "Waist length." },
+      { name: "Medium Knotless Braids",          price: 260, time: "3h",     hair: "included" },
+      { name: "Large Knotless Braids",           price: 200, time: "2h 30m", hair: "included" },
+      { name: "Med Knotless Mid-Back",           price: 210, time: "2h" },
+      { name: "Small Boho Knotless Braids",      price: 280, time: "3h 30m", hair: "provide",  note: "Bring 2 bags, 18 to 20 inch or longer, human or synthetic." },
+      { name: "Small Boho Knotless Braids",      price: 380, time: "4h",     hair: "included", note: "All colours, 2 bags human hair deep bulk, 22 inch." },
+      { name: "Medium Bohemian Knotless, Curly Hair", price: 300, time: "3h 30m", hair: "included", note: "1 bag human hair blend bulk, 18 / 20 / 22 inch." },
+      { name: "Medium Boho Knotless Braids",     price: 300, time: "3h 30m", hair: "included", note: "1 bag human hair deep bulk, 18 / 20 / 22 inch." },
+      { name: "Knotless Braids, Short with Curly", price: 280, time: "2h 30m", hair: "included", note: "1 bag human hair deep bulk, 18 inch. Curly hair charged extra." },
+      { name: "Knotless French Curls",           price: 380, time: "6h 30m", hair: "included" }
     ]},
     { id: "box", label: "Box Braids", items: [
-      { name: "Small Box Braids",              price: 280, time: "2h 30m", hair: "included" },
-      { name: "Small Box Braids, Waist Length",price: 340, from: true, time: "4h 30m", hair: "included" },
-      { name: "Medium Box Braids",             price: 240, time: "3h",     hair: "included" },
-      { name: "Regular Box Braids",            price: 250, time: "3h 30m", hair: "included" },
-      { name: "Jumbo Box Braids, Waist Length",price: 140, time: "1h 30m", hair: "included" },
-      { name: "Goddess Box Braids, Medium",    price: 280, time: "5h",     hair: "included", note: "Curls not included." },
-      { name: "Box Braids, French Curly",      price: 300, time: "6h",     hair: "included" },
-      { name: "Box Braid Touch-Up",            price: 160, from: true, time: "1h 30m" },
-      { name: "Micro Braids",                  price: 350, time: "5h" },
-      { name: "Micro Tree Braids",             price: 380, time: "6h 30m", hair: "included" },
-      { name: "Bob",                           price: 240, time: "4h 30m", hair: "included" }
+      { name: "Regular Box Braids Small",        price: 280, time: "2h 30m", hair: "included" },
+      { name: "Small Box Braid Waist Length",    price: 340, time: "4h 30m", hair: "included" },
+      { name: "Small Box Braids Waist Length",   price: 420, time: "5h 30m" },
+      { name: "Medium Box Braid",                price: 240, time: "3h",     hair: "included" },
+      { name: "Regular Box Braids",              price: 250, time: "3h 30m", hair: "included" },
+      { name: "Jumbo Box Braids Waist Length",   price: 140, time: "1h 30m", hair: "included" },
+      { name: "Goddess Box Braids, Medium",      price: 280, time: "5h",     hair: "included", note: "Curl not included." },
+      { name: "Box Braids French Curly",         price: 300, time: "6h",     hair: "included" },
+      { name: "Box Braid Touch-Up",              price: 160, from: true, time: "1h 30m" },
+      { name: "Micro Braids",                    price: 350, time: "5h" },
+      { name: "Micro Tree Braids",               price: 380, time: "6h 30m", hair: "included" },
+      { name: "Bob",                             price: 240, time: "4h 30m", hair: "included" }
     ]},
     { id: "twists", label: "Twists", items: [
       { name: "Small Senegalese Twist, Waist Length", price: 420, time: "5h 30m", hair: "included" },
-      { name: "Senegalese Twist, Breast Length",      price: 320, time: "5h",     hair: "included" },
-      { name: "Kinky Twist",                          price: 220, time: "4h" },
-      { name: "Kinky Twist Touch-Up",                 price: 150, time: "4h" },
-      { name: "Afro Twist",                           price: 280, time: "4h 30m", hair: "included" },
-      { name: "Passion Twist",                        price: 220, time: "4h 30m", note: "Hair included charged extra." },
-      { name: "Rope Twist, Long",                     price: 300, time: "5h 30m", hair: "included" },
-      { name: "Two-Strand Twist Extensions, Men",     price: 220, from: true, time: "2h 30m" }
+      { name: "Senegalese Twist, Regular Breast Length", price: 320, time: "5h", hair: "included" },
+      { name: "Kinky Twist",                     price: 220, time: "4h" },
+      { name: "Kinky Twist Touch-Up",            price: 150, time: "4h" },
+      { name: "Afro Twist",                      price: 280, time: "4h 30m", hair: "included" },
+      { name: "Passion Twist",                   price: 220, time: "4h 30m", note: "Hair not included. Hair included charged extra." },
+      { name: "Rope Twist, Long",                price: 300, time: "5h 30m", hair: "included" },
+      { name: "Two Strand Twist Extension for Men", price: 220, from: true, time: "2h 30m" }
     ]},
     { id: "cornrows", label: "Cornrows & Ponytails", items: [
-      { name: "Cornrows",                    price: null, time: "50m", note: "Price varies by style. Call for a quote." },
-      { name: "6 Large Cornrows",            price: 120, time: "1h 30m" },
-      { name: "Two French Braids",           price: 80,  time: "1h" },
-      { name: "French Curls Braids",         price: 380, time: "4h" },
-      { name: "Micro French Curl",           price: 380, time: "6h",     hair: "included" },
-      { name: "Small Lemonade Braids",       price: 200, from: true, time: "3h 30m", hair: "included" },
-      { name: "Small Straight Back",         price: 170, time: "3h" },
-      { name: "Two Layer Braids",            price: 230, time: "5h 30m" },
-      { name: "Large Ponytail",              price: 170, time: "3h",     hair: "included" },
-      { name: "Small Ponytail, Long",        price: 240, time: "3h 30m", hair: "included" },
-      { name: "Large Braids, Middle Part",   price: 280, time: "6h",     note: "Waist length." }
+      { name: "Corn Rows",                       price: null, time: "50m",   note: "Price varies by style." },
+      { name: "Large 6 Braid",                   price: 120, time: "1h 30m" },
+      { name: "Large 6 Braids",                  price: 120, time: "1h 30m" },
+      { name: "6 Big Cornrows",                  price: 120, time: "1h 30m" },
+      { name: "Two French Braids",               price: 80,  time: "1h" },
+      { name: "French Curls Braids",             price: 380, time: "4h" },
+      { name: "Micro French Curl",               price: 380, time: "6h",     hair: "included" },
+      { name: "Small, Lemonade, Braids",         price: 200, from: true, time: "3h 30m", hair: "included", note: "Depends on the hairstyle you work with." },
+      { name: "Small Lemonade Braids",           price: 220, time: "4h",     hair: "included" },
+      { name: "Small Straight Back",             price: 170, time: "3h" },
+      { name: "Two Layer Braids",                price: 230, time: "5h 30m" },
+      { name: "Large Ponytail",                  price: 170, time: "3h",     hair: "included" },
+      { name: "Large Ponytail",                  price: 170, time: "3h" },
+      { name: "Small Ponytail, Long",            price: 240, time: "4h" },
+      { name: "Small Ponytail, Long",            price: 240, time: "3h 30m", hair: "included" },
+      { name: "Large Braids Part in the Middle", price: 280, time: "6h",     note: "Waist length." }
     ]},
     { id: "kids", label: "Kids", items: [
-      { name: "Kids Braids",                   price: 180, time: "1h 30m" },
-      { name: "Kids Knotless Braids, 5 to 9",  price: 190, time: "3h 30m", hair: "included" },
-      { name: "Kids Knotless Braids, 10 to 13",price: 200, time: "3h 30m", hair: "included" },
-      { name: "Kids Kinky Twist, 5 to 9",      price: 200, time: "3h 30m", hair: "included" },
-      { name: "French Braids, 9 to 12",        price: 220, time: "2h 30m" },
-      { name: "French Braids, 14 to 16",       price: 280, time: "3h" }
+      { name: "Kids Braids",                     price: 180, time: "1h 30m" },
+      { name: "Kids Knotless Braids, 5 to 9",    price: 190, time: "3h 30m", hair: "included" },
+      { name: "Kids Knotless Braids, 10 to 13",  price: 200, time: "3h 30m", hair: "included" },
+      { name: "Kids Kinky Twist, 5 to 9",        price: 200, time: "3h 30m", hair: "included" },
+      { name: "French Braids for Kid, 9 to 12",  price: 220, time: "2h 30m" },
+      { name: "French Braids for 14 to 16",      price: 280, time: "3h" }
     ]},
     { id: "extensions", label: "Sew-Ins & Crochet", items: [
-      { name: "Traditional Sew-In",  price: 160, time: "2h 30m", hair: "provide" },
-      { name: "Regular Crochet",     price: 140, time: "2h 30m", hair: "provide" },
-      { name: "Individual Crochet",  price: 220, time: "2h 30m", hair: "provide" }
-    ]},
-    { id: "addons", label: "Add-Ons", items: [
-      { name: "Hair Washing",                              price: 30, from: true, time: "30m" },
-      { name: "Blow Dry & Straighten",                     price: 10, from: true, time: "30m" },
-      { name: "Wash, Condition, Blow Dry & Straighten",    price: 30, from: true, time: "30m" }
+      { name: "Traditional Sew-In",              price: 160, time: "2h 30m", hair: "provide", note: "Bring the sew-in of your choice." },
+      { name: "Regular Crochet",                 price: 140, time: "2h 30m", hair: "provide", note: "Bring the crochet hair of your choice." },
+      { name: "Individual Crochet",              price: 220, time: "2h 30m", hair: "provide" }
     ]}
   ],
 
@@ -805,6 +830,14 @@ const CONFIG = {
   hideWeakImages: true,
   hideDuplicates: true,
 
+  
+  addOnsNote: "Can be added to any service. Just ask when you book.",
+  addOns: [
+    { name: "Hair Wash",                          price: "from $30", time: "30 min" },
+    { name: "Blow Dry & Straighten",              price: "$10 to $20", time: "30 min" },
+    { name: "Wash, Condition, Blow Dry & Straighten", price: "$30 to $50", time: "30 min" }
+  ],
+
   heroImage: HERO_URI,
   interiorImage: INTERIOR_URI,
   ownerPortrait: "images/web/hero/ellen-portrait.jpeg",
@@ -840,7 +873,7 @@ const CONFIG = {
   });
 
   document.title = CONFIG.nameFull + " | " + CONFIG.city + ", " + CONFIG.state;
-  $("#logo").innerHTML = esc(CONFIG.name) + "<small>Locs &amp; Braiding</small>";
+  $("#logo").innerHTML = esc(CONFIG.name) + "<small>Locs &middot; Frizz-American Braiding</small>";
   $("#heroSub").textContent = CONFIG.tagline +
     ". Knotless braids, box braids, locs and twists, done with the patience the style deserves.";
   $("#heroImg").src = CONFIG.heroImage;
@@ -883,6 +916,18 @@ const CONFIG = {
         (it.note ? '<p class="svc-note">' + esc(it.note) + "</p>" : "") +
         "</article>";
     }).join("");
+  }
+
+  var addWrap = document.getElementById("addOns");
+  if (addWrap && CONFIG.addOns) {
+    addWrap.innerHTML =
+      '<div class="addons-head"><span class="addons-title">Add-ons</span>' +
+      '<span class="addons-note">' + esc(CONFIG.addOnsNote || "") + "</span></div>" +
+      '<div class="addons-row">' + CONFIG.addOns.map(function (a) {
+        return '<div class="addon"><span class="addon-name">' + esc(a.name) + "</span>" +
+               '<span class="addon-price">' + esc(a.price) + "</span>" +
+               '<span class="chip chip-time">' + esc(a.time) + "</span></div>";
+      }).join("") + "</div>";
   }
 
   svcTabs.innerHTML = groups.map(function (g) {
