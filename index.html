@@ -660,8 +660,9 @@ const CONFIG = {
   mapsUrl:  "https://maps.google.com/maps?daddr=40.392170006899455,-80.01837000000002",
 
   bookingUrl: "https://booksy.com/en-us/929368_ellens-locs-frizz-american-hair-braiding_hair-salon_33045_pittsburgh",
-  instagram:  "https://instagram.com/ellenhairbraiding",
-  facebook:   "https://m.facebook.com/100077522742692/",
+  instagram:  "https://www.instagram.com/ellenafricanhairbraiding/",
+  facebook:   "https://www.facebook.com/ellenafricanhairbraiding/",
+  email:      "Ellenafricanhairbraiding@gmail.com",
 
   rating:      "5.0",
   reviewCount: "30",
@@ -1117,6 +1118,11 @@ const CONFIG = {
     esc(CONFIG.state) + " " + esc(CONFIG.zip);
   $("#ftrPhone").innerHTML =
     '<a href="' + telHref(CONFIG.phone) + '">' + esc(CONFIG.phone) + "</a>";
+  if (CONFIG.email) {
+    var fp = $("#ftrPhone");
+    if (fp) fp.innerHTML += '<br><a href="mailto:' + esc(CONFIG.email) + '">' +
+      esc(CONFIG.email) + "</a>";
+  }
   $("#ftrIg").href = CONFIG.instagram;
   $("#ftrFb").href = CONFIG.facebook;
   $("#ftrBot").textContent = "© " + new Date().getFullYear() + " " + CONFIG.nameFull +
